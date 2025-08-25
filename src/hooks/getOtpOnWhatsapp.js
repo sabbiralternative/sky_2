@@ -2,7 +2,7 @@ import toast from "react-hot-toast";
 import { API } from "../api";
 import { AxiosSecure } from "../lib/AxiosSecure";
 
-const getOtpOnWhatsapp = async (mobileNo, setOrderId, setShowRegister) => {
+const getOtpOnWhatsapp = async (mobileNo, setOrderId) => {
   const otpData = {
     mobile: mobileNo,
     type: "otpsend",
@@ -17,7 +17,6 @@ const getOtpOnWhatsapp = async (mobileNo, setOrderId, setShowRegister) => {
       otpMethod: "whatsapp",
     });
     toast.success(data?.result?.message);
-    setShowRegister(true);
   } else {
     toast.error(data?.error?.errorMessage);
   }

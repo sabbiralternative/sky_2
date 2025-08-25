@@ -20,7 +20,7 @@ const MainNavbar = () => {
                       </Link>
                     </li>
                     <li className="nav-item">
-                      <Link to="/inplay" className>
+                      <Link to="/sports/in-play/0" className>
                         In-Play
                       </Link>
                     </li>
@@ -30,7 +30,7 @@ const MainNavbar = () => {
                       </Link>
                     </li>
                     <li className="nav-item">
-                      <Link to="/sports/soccer/1" className>
+                      <Link to="/sports/football/1" className>
                         football
                       </Link>
                     </li>

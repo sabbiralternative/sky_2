@@ -1,7 +1,9 @@
 import { useSelector } from "react-redux";
 import { useGroupQuery } from "../../../redux/features/events/events";
+import { useNavigate } from "react-router-dom";
 
-const InPlay = () => {
+const Sports = () => {
+  const navigate = useNavigate();
   const { group } = useSelector((state) => state.global);
 
   const { data } = useGroupQuery(
@@ -10,6 +12,10 @@ const InPlay = () => {
       pollingInterval: 1000,
     }
   );
+
+  const navigateGameList = (keys) => {
+    navigate(`/event-details/${data[keys]?.eventTypeId}/${keys}`);
+  };
 
   return (
     <div>
@@ -55,38 +61,50 @@ const InPlay = () => {
                       }
 
                       return (
-                        <div key={index} className="row-my">
+                        <div
+                          onClick={() => navigateGameList(keys)}
+                          key={index}
+                          className="row-my"
+                        >
                           <div className="container-fluid">
                             <div className="row">
                               <div className="col-md-7 col-10">
                                 <p className="matchname">
-                                  <a>
-                                    <img
-                                      rel="preload"
-                                      src="data:image/webp;base64,UklGRn4CAABXRUJQVlA4WAoAAAAwAAAABwAABwAASUNDUMgBAAAAAAHIAAAAAAQwAABtbnRyUkdCIFhZWiAH4AABAAEAAAAAAABhY3NwAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAQAA9tYAAQAAAADTLQAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAlkZXNjAAAA8AAAACRyWFlaAAABFAAAABRnWFlaAAABKAAAABRiWFlaAAABPAAAABR3dHB0AAABUAAAABRyVFJDAAABZAAAAChnVFJDAAABZAAAAChiVFJDAAABZAAAAChjcHJ0AAABjAAAADxtbHVjAAAAAAAAAAEAAAAMZW5VUwAAAAgAAAAcAHMAUgBHAEJYWVogAAAAAAAAb6IAADj1AAADkFhZWiAAAAAAAABimQAAt4UAABjaWFlaIAAAAAAAACSgAAAPhAAAts9YWVogAAAAAAAA9tYAAQAAAADTLXBhcmEAAAAAAAQAAAACZmYAAPKnAAANWQAAE9AAAApbAAAAAAAAAABtbHVjAAAAAAAAAAEAAAAMZW5VUwAAACAAAAAcAEcAbwBvAGcAbABlACAASQBuAGMALgAgADIAMAAxADZBTFBINQAAAAEvQBZgMoL5c6STSF8aERHcLlAUSYorqAoHA9w/OcDBJQEpov+R95eAluA4dIee4AS0vL8AAFZQOCBSAAAAsAIAnQEqCAAIAAFAJiWoAnS6AS38PEBDlEQWVlwAAP2/tcP1uvKr57eKep+mlTM4vgK9McG9xR8txvf/6bGg4x/Ah4f8jSnw2/R2WW9rbPkAAA=="
-                                      className="img-fluid ng-star-inserted"
-                                    />
+                                  <a
+                                    style={{
+                                      display: "flex",
+                                      gap: "10px",
+                                      alignItems: "center",
+                                    }}
+                                  >
+                                    {data?.[keys]?.inPlay === 1 && (
+                                      <img
+                                        style={{
+                                          height: "8px",
+                                        }}
+                                        rel="preload"
+                                        src="data:image/webp;base64,UklGRn4CAABXRUJQVlA4WAoAAAAwAAAABwAABwAASUNDUMgBAAAAAAHIAAAAAAQwAABtbnRyUkdCIFhZWiAH4AABAAEAAAAAAABhY3NwAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAQAA9tYAAQAAAADTLQAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAlkZXNjAAAA8AAAACRyWFlaAAABFAAAABRnWFlaAAABKAAAABRiWFlaAAABPAAAABR3dHB0AAABUAAAABRyVFJDAAABZAAAAChnVFJDAAABZAAAAChiVFJDAAABZAAAAChjcHJ0AAABjAAAADxtbHVjAAAAAAAAAAEAAAAMZW5VUwAAAAgAAAAcAHMAUgBHAEJYWVogAAAAAAAAb6IAADj1AAADkFhZWiAAAAAAAABimQAAt4UAABjaWFlaIAAAAAAAACSgAAAPhAAAts9YWVogAAAAAAAA9tYAAQAAAADTLXBhcmEAAAAAAAQAAAACZmYAAPKnAAANWQAAE9AAAApbAAAAAAAAAABtbHVjAAAAAAAAAAEAAAAMZW5VUwAAACAAAAAcAEcAbwBvAGcAbABlACAASQBuAGMALgAgADIAMAAxADZBTFBINQAAAAEvQBZgMoL5c6STSF8aERHcLlAUSYorqAoHA9w/OcDBJQEpov+R95eAluA4dIee4AS0vL8AAFZQOCBSAAAAsAIAnQEqCAAIAAFAJiWoAnS6AS38PEBDlEQWVlwAAP2/tcP1uvKr57eKep+mlTM4vgK9McG9xR8txvf/6bGg4x/Ah4f8jSnw2/R2WW9rbPkAAA=="
+                                        className="img-fluid ng-star-inserted"
+                                      />
+                                    )}
                                     {data[keys]?.player1} v{" "}
                                     {data[keys]?.player2}
                                   </a>
                                   <b>
-                                    <span className="in_play img-fluid ng-star-inserted">
-                                      In-Play
-                                    </span>
-                                    <span className="game-fancy ng-star-inserted">
-                                      <img
-                                        rel="preload"
-                                        src="/img/P-alphavat.5ef198fe.svg"
-                                        className="img-fluid"
-                                      />
-                                    </span>
-                                    <span className="game-fancy ng-star-inserted">
-                                      <img
-                                        rel="preload"
-                                        src="data:image/webp;base64,UklGRtACAABXRUJQVlA4WAoAAAAwAAAAFwAAFwAASUNDUMgBAAAAAAHIAAAAAAQwAABtbnRyUkdCIFhZWiAH4AABAAEAAAAAAABhY3NwAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAQAA9tYAAQAAAADTLQAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAlkZXNjAAAA8AAAACRyWFlaAAABFAAAABRnWFlaAAABKAAAABRiWFlaAAABPAAAABR3dHB0AAABUAAAABRyVFJDAAABZAAAAChnVFJDAAABZAAAAChiVFJDAAABZAAAAChjcHJ0AAABjAAAADxtbHVjAAAAAAAAAAEAAAAMZW5VUwAAAAgAAAAcAHMAUgBHAEJYWVogAAAAAAAAb6IAADj1AAADkFhZWiAAAAAAAABimQAAt4UAABjaWFlaIAAAAAAAACSgAAAPhAAAts9YWVogAAAAAAAA9tYAAQAAAADTLXBhcmEAAAAAAAQAAAACZmYAAPKnAAANWQAAE9AAAApbAAAAAAAAAABtbHVjAAAAAAAAAAEAAAAMZW5VUwAAACAAAAAcAEcAbwBvAGcAbABlACAASQBuAGMALgAgADIAMAAxADZBTFBIegAAAAFHIBBI4SYXEREGuI1tW1W+f3IPKcEl1AIICSnBJXTYdf97n3UQ0X9Fbts29Km7/kYUlDOSXOxQUvGC2XA4jMUXCnPlX71kkpcMPSA2zAFzvIH7et1Q9qpVR3nA/XYrlbcxa1SsBVfsAolZ11mxYlbcRuZgOKxHgYkAVlA4IGAAAABwAwCdASoYABgAPm0sk0akIiGhMBgIAIANiUAYaAKqBKxXlQAA/vjasyAPnrGXpErQL135u5qqODUVE20X/0u9clcbLuFdzuTkd8X+l9xg3DelzHD+OJwZIrr/+z4QAAA="
-                                        className="img-fluid"
-                                      />
-                                    </span>
+                                    {data?.[keys]?.inPlay === 1 && (
+                                      <span className="in_play img-fluid ng-star-inserted">
+                                        In-Play
+                                      </span>
+                                    )}
+                                    {data?.[keys]?.isFancy === 1 && (
+                                      <span className="game-fancy ng-star-inserted">
+                                        <img
+                                          rel="preload"
+                                          src="data:image/webp;base64,UklGRtACAABXRUJQVlA4WAoAAAAwAAAAFwAAFwAASUNDUMgBAAAAAAHIAAAAAAQwAABtbnRyUkdCIFhZWiAH4AABAAEAAAAAAABhY3NwAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAQAA9tYAAQAAAADTLQAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAlkZXNjAAAA8AAAACRyWFlaAAABFAAAABRnWFlaAAABKAAAABRiWFlaAAABPAAAABR3dHB0AAABUAAAABRyVFJDAAABZAAAAChnVFJDAAABZAAAAChiVFJDAAABZAAAAChjcHJ0AAABjAAAADxtbHVjAAAAAAAAAAEAAAAMZW5VUwAAAAgAAAAcAHMAUgBHAEJYWVogAAAAAAAAb6IAADj1AAADkFhZWiAAAAAAAABimQAAt4UAABjaWFlaIAAAAAAAACSgAAAPhAAAts9YWVogAAAAAAAA9tYAAQAAAADTLXBhcmEAAAAAAAQAAAACZmYAAPKnAAANWQAAE9AAAApbAAAAAAAAAABtbHVjAAAAAAAAAAEAAAAMZW5VUwAAACAAAAAcAEcAbwBvAGcAbABlACAASQBuAGMALgAgADIAMAAxADZBTFBIegAAAAFHIBBI4SYXEREGuI1tW1W+f3IPKcEl1AIICSnBJXTYdf97n3UQ0X9Fbts29Km7/kYUlDOSXOxQUvGC2XA4jMUXCnPlX71kkpcMPSA2zAFzvIH7et1Q9qpVR3nA/XYrlbcxa1SsBVfsAolZ11mxYlbcRuZgOKxHgYkAVlA4IGAAAABwAwCdASoYABgAPm0sk0akIiGhMBgIAIANiUAYaAKqBKxXlQAA/vjasyAPnrGXpErQL135u5qqODUVE20X/0u9clcbLuFdzuTkd8X+l9xg3DelzHD+OJwZIrr/+z4QAAA="
+                                          className="img-fluid"
+                                        />
+                                      </span>
+                                    )}
                                     <span className="game-bm ng-star-inserted">
                                       <img
                                         rel="preload"
@@ -94,7 +112,7 @@ const InPlay = () => {
                                         className="img-fluid"
                                       />
                                     </span>
-                                    {/**/}
+
                                     <span className="timer-on">
                                       {data[keys]?.date}
                                     </span>
@@ -155,4 +173,4 @@ const InPlay = () => {
   );
 };
 
-export default InPlay;
+export default Sports;
