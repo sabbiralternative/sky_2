@@ -1,6 +1,7 @@
 import Sports from "../../components/modules/Dashboard/Sports";
 import LinkSlider from "../../components/modules/Dashboard/LinkSlider";
 import SidebarLayout from "../../layout/SidebarLayout";
+import ConditionFooter from "../../components/shared/ConditionFooter/ConditionFooter";
 
 const Dashboard = () => {
   return (
@@ -80,29 +81,7 @@ const Dashboard = () => {
               <Sports />
             </div>
           </div>
-          <div className="condition-footer">
-            <div className="row">
-              <div className="col-md-12">
-                <div className="inner-footer">
-                  <div className="support-wrap">
-                    <div className="support-mail">
-                      <a className="rules-btn-home">Privacy Policy</a>
-                      <a className="rules-btn-home arrow">KYC</a>
-                      <a className="rules-btn-home arrow">
-                        Terms and Conditions
-                      </a>
-                      <a className="rules-btn-home arrow">
-                        Rules and Regulations
-                      </a>
-                      <a className="rules-btn-home arrow">
-                        Responsible Gambling
-                      </a>
-                    </div>
-                  </div>
-                </div>
-              </div>
-            </div>
-          </div>
+          <ConditionFooter />
         </div>
       </SidebarLayout>
     </div>

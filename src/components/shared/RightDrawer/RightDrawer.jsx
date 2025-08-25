@@ -2,22 +2,33 @@ import { useDispatch, useSelector } from "react-redux";
 import { logout } from "../../../redux/features/auth/authSlice";
 import { useNavigate } from "react-router-dom";
 import useBalance from "../../../hooks/balance";
-import { useEffect, useState } from "react";
+import { useEffect, useRef, useState } from "react";
+import useCloseModalClickOutside from "../../../hooks/closeModal";
 
 const RightDrawer = ({ setShowRightDrawer, showRightDrawer }) => {
   const [animation, setAnimation] = useState(null);
   const { user, memberId } = useSelector((state) => state.auth);
   const { data } = useBalance();
+  const ref = useRef();
+
   const navigate = useNavigate();
   const dispatch = useDispatch();
   const closeDrawer = () => {
     setShowRightDrawer(false);
   };
+  useCloseModalClickOutside(ref, () => {
+    closeDrawer();
+  });
 
   const handleLogout = () => {
     dispatch(logout());
     closeDrawer();
     navigate("/");
+  };
+
+  const handleNavigate = (link) => {
+    navigate(link);
+    closeDrawer();
   };
 
   useEffect(() => {
@@ -47,6 +58,7 @@ const RightDrawer = ({ setShowRightDrawer, showRightDrawer }) => {
         aria-labelledby="offcanvasExampleLabel"
         aria-modal="true"
         role="dialog"
+        ref={ref}
       >
         <div className="offcanvas-header">
           <button
@@ -290,7 +302,7 @@ const RightDrawer = ({ setShowRightDrawer, showRightDrawer }) => {
                 </a>
               </li>
               <li>
-                <a href="/change-password" className>
+                <a onClick={() => handleNavigate("/change-password")} className>
                   <div className="menu-con">
                     <div className="menu-icon">
                       <img

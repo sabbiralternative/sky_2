@@ -2,6 +2,7 @@ import { useEffect, useState } from "react";
 import SidebarLayout from "../../layout/SidebarLayout";
 import { useGroupQuery } from "../../redux/features/events/events";
 import { useNavigate, useParams } from "react-router-dom";
+import ConditionFooter from "../../components/shared/ConditionFooter/ConditionFooter";
 
 const Sports = () => {
   const { id } = useParams();
@@ -308,29 +309,7 @@ const Sports = () => {
               })}
             </div>
           </div>
-          <div className="condition-footer">
-            <div className="row">
-              <div className="col-md-12">
-                <div className="inner-footer">
-                  <div className="support-wrap">
-                    <div className="support-mail">
-                      <a className="rules-btn-home">Privacy Policy</a>
-                      <a className="rules-btn-home arrow">KYC</a>
-                      <a className="rules-btn-home arrow">
-                        Terms and Conditions
-                      </a>
-                      <a className="rules-btn-home arrow">
-                        Rules and Regulations
-                      </a>
-                      <a className="rules-btn-home arrow">
-                        Responsible Gambling
-                      </a>
-                    </div>
-                  </div>
-                </div>
-              </div>
-            </div>
-          </div>
+          <ConditionFooter />
         </div>
       </SidebarLayout>
     </div>
