@@ -67,7 +67,7 @@ input:-moz-autofill {
 }
 
 .search-game-name {
-  background: var(--bg-color-headerBg);
+  background: var(--bs-blue);
   color: #ffffff;
   padding: 5px;
 }
