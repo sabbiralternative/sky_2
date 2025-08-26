@@ -100,7 +100,7 @@ const MainNavbar = () => {
                       </Link>
                     </li>
                     <li className="nav-item">
-                      <Link to="/games/casino" className="hightlight-menus">
+                      <Link to="/casino" className="hightlight-menus">
                         Casino
                       </Link>
                     </li>

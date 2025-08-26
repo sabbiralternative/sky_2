@@ -5,6 +5,8 @@ import Dashboard from "../pages/Dashboard/Dashboard";
 import Sports from "../pages/Sports/Sports";
 import EventDetails from "../pages/EventDetails/EventDetails";
 import ChangePassword from "../pages/ChangePassword/ChangePassword";
+import BettingProfitLoss from "../pages/BettingProfitLoss/BettingProfitLoss";
+import Casino from "../pages/Casino/Casino";
 
 export const router = createBrowserRouter(
   [
@@ -33,6 +35,14 @@ export const router = createBrowserRouter(
         {
           path: "/change-password",
           element: <ChangePassword />,
+        },
+        {
+          path: "/betting-profit-loss",
+          element: <BettingProfitLoss />,
+        },
+        {
+          path: "/casino",
+          element: <Casino />,
         },
       ],
     },

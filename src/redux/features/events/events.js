@@ -42,6 +42,14 @@ export const eventsApi = baseApi.injectEndpoints({
         };
       },
     }),
+    mac88All: builder.query({
+      query: () => {
+        return {
+          url: `${API.mac88All}`,
+          method: "GET",
+        };
+      },
+    }),
     order: builder.mutation({
       query: (payload) => {
         return {
@@ -99,4 +107,5 @@ export const {
   useEditButtonValuesMutation,
   useAccountStatementMutation,
   useVideoMutation,
+  useMac88AllQuery,
 } = eventsApi;

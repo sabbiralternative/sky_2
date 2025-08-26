@@ -253,24 +253,12 @@ const RightDrawer = ({ setShowRightDrawer, showRightDrawer }) => {
                   </div>
                 </a>
               </li>
+
               <li>
-                <a href="/bets" className>
-                  <div className="menu-con">
-                    <div className="menu-icon">
-                      <img
-                        rel="preload"
-                        src="data:image/webp;base64,UklGRhADAABXRUJQVlA4WAoAAAAwAAAAEwAAEwAASUNDUMgBAAAAAAHIAAAAAAQwAABtbnRyUkdCIFhZWiAH4AABAAEAAAAAAABhY3NwAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAQAA9tYAAQAAAADTLQAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAlkZXNjAAAA8AAAACRyWFlaAAABFAAAABRnWFlaAAABKAAAABRiWFlaAAABPAAAABR3dHB0AAABUAAAABRyVFJDAAABZAAAAChnVFJDAAABZAAAAChiVFJDAAABZAAAAChjcHJ0AAABjAAAADxtbHVjAAAAAAAAAAEAAAAMZW5VUwAAAAgAAAAcAHMAUgBHAEJYWVogAAAAAAAAb6IAADj1AAADkFhZWiAAAAAAAABimQAAt4UAABjaWFlaIAAAAAAAACSgAAAPhAAAts9YWVogAAAAAAAA9tYAAQAAAADTLXBhcmEAAAAAAAQAAAACZmYAAPKnAAANWQAAE9AAAApbAAAAAAAAAABtbHVjAAAAAAAAAAEAAAAMZW5VUwAAACAAAAAcAEcAbwBvAGcAbABlACAASQBuAGMALgAgADIAMAAxADZBTFBIlAAAAAFHIBBI4SYXEREGwLFtW21zxCrNbhmG4JKhDAnKcFJy8kux3rz1BxHR/wmAZxE1B3hQYfCibKCygYc1bNYArT+48htkJh+OJrVJvEarOpOo4+FgJpfKTmoRcXLrwU367XabwrjyEwfQuboP/14zJnHuhw0orFGsGb1DJdoVZGEQBEFpQ+YA5BbcqyAIfhXQKkREDQBWUDgghgAAABAFAJ0BKhQAFAA+bTCSRyQioaEoCqiADYlmAJ0y3rSCwKEBmAHrFfgBrAG9AAPoCIwA/vaVj4XnovUuL1j/8W1bh7gkdvuVk1fddXn4NJmeXrZrtu69pcz8pUbbX/RHrqVdhJUsBN2yclgNfSHkS5D4efYYIZQ7U4P8xZ+Pra28OtRUAAAA"
-                        alt=""
-                      />
-                    </div>
-                    <div className="menu-icon-con">
-                      <h5>Unsettled Bets</h5>
-                    </div>
-                  </div>
-                </a>
-              </li>
-              <li>
-                <a href="/bets" className>
+                <a
+                  onClick={() => handleNavigate("/betting-profit-loss")}
+                  className
+                >
                   <div className="menu-con">
                     <div className="menu-icon">
                       <img
@@ -280,7 +268,7 @@ const RightDrawer = ({ setShowRightDrawer, showRightDrawer }) => {
                       />
                     </div>
                     <div className="menu-icon-con">
-                      <h5>Profit/Loss</h5>
+                      <h5>Betting Profit/Loss</h5>
                     </div>
                   </div>
                 </a>
